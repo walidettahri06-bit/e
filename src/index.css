@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 212 100% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 212 100% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 100% 15%;
+
+    --primary: 212 100% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 212 100% 15%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 212 20% 46%;
+
+    --accent: 33 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 212 20% 88%;
+    --input: 212 20% 88%;
+    --ring: 33 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 212 100% 15%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 33 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 212 80% 22%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 212 60% 25%;
+    --sidebar-ring: 33 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/30 shadow-lg;
+  }
+
+  .section-pearl {
+    @apply bg-secondary;
+  }
+
+  .section-navy {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .pulse-cta {
+    animation: pulse-orange 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px hsl(212 100% 15% / 0.15);
+  }
+
+  .nav-link {
+    @apply relative text-primary-foreground/80 hover:text-accent transition-colors duration-200 font-body font-medium;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 origin-left transition-transform duration-300;
+  }
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  .vertical-line {
+    background: linear-gradient(180deg, transparent 0%, hsl(33 100% 50%) 20%, hsl(33 100% 50%) 80%, transparent 100%);
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-orange {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(33 100% 50% / 0.6);
+    }
+    50% {
+      box-shadow: 0 0 0 12px hsl(33 100% 50% / 0);
+    }
+  }
+}
